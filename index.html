@@ -3,52 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Airficiency – Woolworths Installation</title>
+  <title>Airficiency – Content Review</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue: #1a5faa;
+      --blue-light: #2176cc;
+      --dark: #0f1117;
+      --card: #16181f;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #7a7f8e;
+      --accent: #1a5faa;
+    }
 
     body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
       min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: rgba(15,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 32px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-brand .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), #0a3a7a);
+      display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    header h1 {
-      font-size: 1.6rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: #ffffff;
       letter-spacing: 0.5px;
+      color: #fff;
     }
 
-    header p {
-      margin-top: 8px;
+    .topbar-brand .brand-name {
       font-size: 0.95rem;
-      color: #8b949e;
+      font-weight: 600;
+      color: #fff;
     }
 
-    .carousel-wrapper {
+    .topbar-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      padding: 60px 24px 0;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue-light);
+      background: rgba(26,95,170,0.12);
+      border: 1px solid rgba(26,95,170,0.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 40px auto;
+      max-width: 800px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .main { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── CAROUSEL ── */
+    .carousel-section {}
+
+    .carousel-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .carousel-label::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 2px;
+      background: var(--blue-light);
+      border-radius: 2px;
+    }
+
+    .carousel-wrap {
       position: relative;
-      width: 100%;
-      max-width: 560px;
     }
 
     .carousel {
-      position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-      background: #161b22;
+      border-radius: 14px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
     .slides {
@@ -56,170 +178,340 @@
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .slide {
-      min-width: 100%;
-    }
-
+    .slide { min-width: 100%; }
     .slide img {
       width: 100%;
       display: block;
-      object-fit: cover;
       aspect-ratio: 1 / 1;
+      object-fit: cover;
     }
 
-    /* Counter badge */
-    .counter {
+    .slide-counter {
       position: absolute;
-      top: 14px;
-      right: 16px;
-      background: rgba(0,0,0,0.55);
-      color: #fff;
-      font-size: 0.78rem;
+      top: 12px;
+      right: 12px;
+      font-size: 0.72rem;
       font-weight: 600;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
       padding: 4px 10px;
       border-radius: 20px;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       pointer-events: none;
     }
 
-    /* Arrow buttons */
     .arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.12);
-      border: none;
-      color: #fff;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      font-size: 1.2rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       transition: background 0.2s;
       z-index: 10;
     }
 
-    .arrow:hover { background: rgba(255,255,255,0.25); }
-    .arrow.prev { left: -20px; }
-    .arrow.next { right: -20px; }
+    .arrow:hover { background: rgba(255,255,255,0.2); }
+    .arrow.prev { left: -18px; }
+    .arrow.next { right: -18px; }
 
-    /* Dots */
     .dots {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-top: 20px;
+      gap: 7px;
+      margin-top: 16px;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: #30363d;
+      background: #2a2d38;
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
     }
 
-    .dot.active {
-      background: #1f6feb;
-      transform: scale(1.3);
+    .dot.active { background: var(--blue-light); transform: scale(1.35); }
+
+    /* ── COPY SECTION ── */
+    .copy-section {}
+
+    .copy-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
     }
 
-    /* Caption */
-    .caption {
-      text-align: center;
-      margin-top: 18px;
-      font-size: 0.88rem;
-      color: #8b949e;
-      min-height: 20px;
+    .copy-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    footer {
-      margin-top: 48px;
+    .linkedin-icon {
+      width: 30px;
+      height: 30px;
+      background: #0a66c2;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+
+    .copy-header-text .platform { font-size: 0.8rem; font-weight: 600; color: #fff; }
+    .copy-header-text .handle { font-size: 0.72rem; color: var(--muted); }
+
+    .copy-body {
+      padding: 20px 22px;
+    }
+
+    .copy-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #c9cdd8;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .copy-tags {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--blue-light);
+      background: rgba(26,95,170,0.1);
+      border: 1px solid rgba(26,95,170,0.2);
+      padding: 3px 9px;
+      border-radius: 12px;
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+
+    .contact-card h3 {
       font-size: 0.78rem;
-      color: #30363d;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      color: #c9cdd8;
+    }
+
+    .contact-item:last-child { margin-bottom: 0; }
+
+    .contact-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(26,95,170,0.12);
+      border: 1px solid rgba(26,95,170,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: var(--blue-light);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
       text-align: center;
+      font-size: 0.75rem;
+      color: #3a3f52;
     }
 
     @media (max-width: 480px) {
+      .topbar { padding: 12px 16px; }
       .arrow.prev { left: 6px; }
       .arrow.next { right: 6px; }
+      .hero { padding: 40px 16px 0; }
+      .main { padding: 0 16px 60px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Airficiency – LinkedIn Carousel</h1>
-    <p>Woolworths Edit Store HVAC Installation</p>
-  </header>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-brand">
+      <div class="logo-circle">AF</div>
+      <span class="brand-name">Airficiency</span>
+    </div>
+    <div class="topbar-badge">Content Review</div>
+  </div>
 
-  <div class="carousel-wrapper">
-    <button class="arrow prev" onclick="move(-1)">&#8592;</button>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">LinkedIn Post · April 2025</div>
+    <h1>Woolworths Edit – Bredasdorp<br>HVAC Installation</h1>
+    <p>Please review the carousel post and copy below. Use the arrows or swipe to browse the slides.</p>
+  </div>
 
-    <div class="carousel">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="Post 1.png" alt="Woolworths Edit exterior with Airficiency branding" /></div>
-        <div class="slide"><img src="Post 2.png" alt="Ceiling HVAC ducting installation inside Woolworths" /></div>
-        <div class="slide"><img src="Post 3.png" alt="Ventilation system overview inside the store" /></div>
-        <div class="slide"><img src="Post 4.png" alt="Completed aircon and refrigeration install" /></div>
+  <div class="divider"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- LEFT: CAROUSEL -->
+    <div class="carousel-section">
+      <div class="carousel-label">Carousel Slides</div>
+      <div class="carousel-wrap">
+        <button class="arrow prev" onclick="move(-1)">&#8592;</button>
+        <div class="carousel">
+          <div class="slides" id="slides">
+            <div class="slide"><img src="Post 1.png" alt="Woolworths Edit exterior" /></div>
+            <div class="slide"><img src="Post 2.png" alt="HVAC ducting inside store" /></div>
+            <div class="slide"><img src="Post 3.png" alt="Ventilation system overview" /></div>
+            <div class="slide"><img src="Post 4.png" alt="Completed installation" /></div>
+          </div>
+          <div class="slide-counter" id="counter">1 / 4</div>
+        </div>
+        <button class="arrow next" onclick="move(1)">&#8594;</button>
       </div>
-      <div class="counter" id="counter">1 / 4</div>
+      <div class="dots" id="dots">
+        <div class="dot active" onclick="goTo(0)"></div>
+        <div class="dot" onclick="goTo(1)"></div>
+        <div class="dot" onclick="goTo(2)"></div>
+        <div class="dot" onclick="goTo(3)"></div>
+      </div>
     </div>
 
-    <button class="arrow next" onclick="move(1)">&#8594;</button>
+    <!-- RIGHT: COPY + CONTACT -->
+    <div class="copy-section">
+
+      <div class="carousel-label">Post Copy</div>
+
+      <div class="copy-card">
+        <div class="copy-header">
+          <div class="linkedin-icon">in</div>
+          <div class="copy-header-text">
+            <div class="platform">Airficiency</div>
+            <div class="handle">LinkedIn · Carousel Post</div>
+          </div>
+        </div>
+        <div class="copy-body">
+          <div class="copy-text">Another one off the list. ✅
+
+We're proud to have supplied and installed Daikin ducted hideaway units and a complete mechanical ventilation system for the brand-new Woolworths Edit in Bredasdorp — on time, on spec, and open for business.
+
+Woolworths Edit is a curated, compact store format bringing premium clothing, footwear, beauty, and selected food to convenient, smaller locations. A high-end retail experience like that deserves a climate control system that's just as refined — quiet, efficient, and completely out of sight. That's exactly what Daikin ducted hideaway units deliver. 🎯
+
+Swipe through to see the install. 👉
+
+A huge shoutout to our team for the precision and commitment on this one — tight timeline, big result. 💪
+
+Looking for a trusted HVAC partner for your next commercial build or fit-out? Let's talk.</div>
+          <div class="copy-tags">
+            <span class="tag">#Airficiency</span>
+            <span class="tag">#Daikin</span>
+            <span class="tag">#DaikinHVAC</span>
+            <span class="tag">#DuctedAircon</span>
+            <span class="tag">#CommercialHVAC</span>
+            <span class="tag">#MechanicalVentilation</span>
+            <span class="tag">#WoolworthsEdit</span>
+            <span class="tag">#Bredasdorp</span>
+            <span class="tag">#Overberg</span>
+            <span class="tag">#WesternCape</span>
+            <span class="tag">#RetailFitout</span>
+            <span class="tag">#ProjectComplete</span>
+            <span class="tag">#EnergyEfficiency</span>
+            <span class="tag">#HVACInstallation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Contact</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <span>021 981 2540 &nbsp;·&nbsp; Reception</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <span>082 373 3668 &nbsp;·&nbsp; Sales</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <a href="mailto:service@airficiency.co.za">service@airficiency.co.za</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <a href="https://airficiency.co.za" target="_blank" rel="noopener">airficiency.co.za</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="dots" id="dots">
-    <div class="dot active" onclick="goTo(0)"></div>
-    <div class="dot" onclick="goTo(1)"></div>
-    <div class="dot" onclick="goTo(2)"></div>
-    <div class="dot" onclick="goTo(3)"></div>
+  <div class="footer">
+    Prepared for review by Airficiency &nbsp;·&nbsp; Airconditioning, Ventilation &amp; Refrigeration
   </div>
-
-  <div class="caption" id="caption">Exterior – Woolworths Edit, Airficiency branding</div>
-
-  <footer>Prepared by Airficiency &nbsp;·&nbsp; Airconditioning, Ventilation &amp; Refrigeration</footer>
 
   <script>
-    const captions = [
-      "Exterior – Woolworths Edit, Airficiency branding",
-      "Ceiling HVAC ducting installation inside the store",
-      "Ventilation system overview – full ceiling run",
-      "Completed aircon and refrigeration installation"
-    ];
-
     let current = 0;
     const total = 4;
 
     function update() {
       document.getElementById('slides').style.transform = `translateX(-${current * 100}%)`;
       document.getElementById('counter').textContent = `${current + 1} / ${total}`;
-      document.getElementById('caption').textContent = captions[current];
       document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
     }
 
-    function move(dir) {
-      current = (current + dir + total) % total;
-      update();
-    }
+    function move(dir) { current = (current + dir + total) % total; update(); }
+    function goTo(i) { current = i; update(); }
 
-    function goTo(index) {
-      current = index;
-      update();
-    }
-
-    // Keyboard nav
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') move(-1);
       if (e.key === 'ArrowRight') move(1);
     });
 
-    // Touch/swipe support
     let startX = 0;
     const el = document.getElementById('slides');
     el.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
