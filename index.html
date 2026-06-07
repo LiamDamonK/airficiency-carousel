@@ -324,12 +324,13 @@
         <button class="arrow prev" onclick="move(-1)">&#8592;</button>
         <div class="carousel">
           <div class="slides" id="slides">
-            <div class="slide"><img src="Post 1.png" alt="Woolworths Edit exterior" /></div>
-            <div class="slide"><img src="Post 2.png" alt="HVAC ducting inside store" /></div>
-            <div class="slide"><img src="Post 3.png" alt="Ventilation system overview" /></div>
-            <div class="slide"><img src="Post 4.png" alt="Completed installation" /></div>
+            <div class="slide"><img src="Post 1.png" alt="Slide 1" /></div>
+            <div class="slide"><img src="Post 2.png" alt="Slide 2" /></div>
+            <div class="slide"><img src="Post 3.png" alt="Slide 3" /></div>
+            <div class="slide"><img src="Post 4.png" alt="Slide 4" /></div>
+            <div class="slide"><img src="Post 5.png" alt="Slide 5" /></div>
           </div>
-          <div class="slide-counter" id="counter">1 / 4</div>
+          <div class="slide-counter" id="counter">1 / 5</div>
         </div>
         <button class="arrow next" onclick="move(1)">&#8594;</button>
       </div>
@@ -338,12 +339,13 @@
         <div class="dot" onclick="goTo(1)"></div>
         <div class="dot" onclick="goTo(2)"></div>
         <div class="dot" onclick="goTo(3)"></div>
+        <div class="dot" onclick="goTo(4)"></div>
       </div>
     </div>
 
     <!-- RIGHT: POST COPY -->
     <div class="copy-section">
-      <div class="section-label">Post Copy · LinkedIn Post - 24 April</div>
+      <div class="section-label">Post Copy · LinkedIn Post - 8 June</div>
 
       <div class="copy-card">
         <div class="copy-header">
@@ -357,37 +359,27 @@
         </div>
 
         <div class="copy-body">
-          <div class="copy-text">Another one off the list. ✅
+          <div class="copy-text">From residential homes to large commercial developments — no project is too big or too small. 🏠🏢
 
-We're proud to have supplied and installed Daikin ducted hideaway units and a complete mechanical ventilation system for the brand-new Woolworths Edit in Bredasdorp — on time, on spec, and open for business.
+At Airficiency, we design and install tailored climate control solutions across Cape Town and the Western Cape, working with leading brands like Daikin, Samsung, Midea, Mitsubishi Electric, LG, and more.
 
-Woolworths Edit is a curated, compact store format bringing premium clothing, footwear, beauty, and selected food to convenient, smaller locations. A high-end retail experience like that deserves a climate control system that's just as refined — quiet, efficient, and completely out of sight. That's exactly what Daikin ducted hideaway units deliver. 🎯
+Our services include:
+✔️ DX split systems
+✔️ VRV/VRF systems
+✔️ Fresh air &amp; extraction systems
+✔️ Chilled water systems
+✔️ Mechanical ventilation
+✔️ Ongoing maintenance &amp; support
 
-Swipe through to see the install. 👉
+Every project is handled end to end — from consultation and design through to installation and commissioning. Done right, on time, and with care.
 
-Looking for a trusted HVAC partner for your next commercial build or fit-out? Let's talk.
+Get in touch for a free consultation.
 
 📞 Tel: 021 981 2540
 📱 Cell: 072 684 0056
 📧 info@airficiency.co.za
 🌐 www.airficiency.co.za</div>
 
-          <div class="copy-tags">
-            <span class="tag">#Airficiency</span>
-            <span class="tag">#Daikin</span>
-            <span class="tag">#DaikinHVAC</span>
-            <span class="tag">#DuctedAircon</span>
-            <span class="tag">#CommercialHVAC</span>
-            <span class="tag">#MechanicalVentilation</span>
-            <span class="tag">#WoolworthsEdit</span>
-            <span class="tag">#Bredasdorp</span>
-            <span class="tag">#Overberg</span>
-            <span class="tag">#WesternCape</span>
-            <span class="tag">#RetailFitout</span>
-            <span class="tag">#ProjectComplete</span>
-            <span class="tag">#EnergyEfficiency</span>
-            <span class="tag">#HVACInstallation</span>
-          </div>
         </div>
       </div>
     </div>
@@ -400,7 +392,7 @@ Looking for a trusted HVAC partner for your next commercial build or fit-out? Le
 
   <script>
     let current = 0;
-    const total = 4;
+    const total = 5;
 
     function update() {
       document.getElementById('slides').style.transform = `translateX(-${current * 100}%)`;
